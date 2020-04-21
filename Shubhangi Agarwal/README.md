@@ -37,6 +37,7 @@ POST data in this format:
         "typestore": "xyz",
         "size": "1300",
         "workingemployees": 5,
+        "customers": 100, 
         "service": "return",
         "password": "pass",
         "confirmPassword": "pass"
