@@ -18,7 +18,7 @@ def partners_list(request):
             partner = Partner.objects.last()
             with open('training.csv', 'a+', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow([partner.id,partner.firstName,partner.lastName,partner.email,partner.contact,partner.address,partner.city,partner.state,partner.typestore,partner.size,partner.workingemployees,partner.service,partner.password,partner.confirmPassword])
+                writer.writerow([partner.id,partner.address,partner.city,partner.state,partner.typestore,partner.size,partner.workingemployees,partner.customers,partner.service])
             return Response(status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
