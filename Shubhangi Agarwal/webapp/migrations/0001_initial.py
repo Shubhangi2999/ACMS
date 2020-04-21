@@ -25,7 +25,6 @@ class Migration(migrations.Migration):
                 ('typestore', models.CharField(max_length=32)),
                 ('size', models.CharField(max_length=32)),
                 ('workingemployees', models.PositiveIntegerField()),
-                ('space', models.CharField(max_length=32)),
                 ('service', models.CharField(max_length=32)),
                 ('password', models.CharField(max_length=32)),
                 ('confirmPassword', models.CharField(max_length=32)),
