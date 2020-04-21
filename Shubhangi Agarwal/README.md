@@ -43,5 +43,5 @@ POST data in this format:
         "confirmPassword": "pass"
       }
  
-training.csv file attributes format: {id,address,city,state,typestore,size,workingemployees,customers,service}
+training.csv file attributes format: { id , address , city , state , typestore , size , workingemployees , customers , service }
 
