@@ -4,7 +4,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import { isEmail } from 'validator';
 import {Container,Row,Col} from 'reactstrap';
 import axios from "axios"
-import { API_URL } from "../constants/index.js";
+import { API_URL } from "../constants";
 
 
 class Register extends Component {
