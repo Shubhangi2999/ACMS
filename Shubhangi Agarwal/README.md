@@ -1,6 +1,6 @@
 # ACMS
 
-BACKEND:
+### BACKEND:
 
 Pre-requisites:
   Python3, pip
@@ -47,7 +47,7 @@ POST data in this format:
  
 training.csv file attributes format: { id , address , city , state , typestore , size , workingemployees , customers , service }
 
-FRONTEND:
+### FRONTEND:
 
 Pre-requisites:
   Node.js,npm
@@ -66,7 +66,7 @@ After installing the above, through terminal go to the frontend project director
 
 Now, open localhost:3000/ in a browser.
 
-End-to-end Working: (POST Request)
+### End-to-end Working: (POST Request)
 
 1- Start the backend server through a terminal
 
