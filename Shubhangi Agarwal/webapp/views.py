@@ -18,7 +18,7 @@ def partners_list(request):
             partner = Partner.objects.last()
             with open('training.csv', 'a+', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow([partner.id,partner.address,partner.city,partner.state,partner.typestore,partner.size,partner.workingemployees,partner.customers,partner.service])
+                writer.writerow([partner.id,partner.address,partner.city,partner.state,partner.typestore,partner.size,partner.workingemployees,partner.customer,partner.service])
             return Response(status=status.HTTP_201_CREATED)
 
     elif request.method == 'GET':
