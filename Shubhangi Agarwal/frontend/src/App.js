@@ -1,42 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import {UserForm} from './component/UserForm';
 import './App.css';
-import Header from './components/Shared/Header/header.component';
-import Footer from './components/Shared/Footer/footer.component';
-import Register from './components/Register/register.component';
+import Header from './component/Shared/Header/header.component';
 
-function App() {
-
-  return (
+class App extends Component {
+  render()
+  {
+    return (
+    <div className="App">
     <div className="wrapper">
-      <div className="form-wrapper">
+    <div className="form-wrapper">
     <Container> 
-      
-      <Row>
-        <Col>
-          <Header />
-        </Col>
-      </Row>
-      
-      <div>
-      <Row>
-        <Col md={12}>
-          <Register />
-        </Col>
-      </Row>
-      </div>
-      <Row>
-        <Col>
-          <Footer />
-        </Col>
-      </Row>
-      
+      <Header/>
+      <UserForm />
     </Container>
     </div>
     </div>
-    
-    
+    </div>
   );
+  }
 }
 
 export default App;

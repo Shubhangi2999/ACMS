@@ -18,17 +18,16 @@ def partners_list(request):
             partner = Partner.objects.last()
             with open('training.csv', 'a+', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow([partner.id,partner.address,partner.city,partner.state,partner.typestore,partner.size,partner.workingemployees,partner.customers,partner.service])
+                writer.writerow([partner.id,partner.address,partner.city,partner.state,partner.typestore,partner.size,partner.workingemployees,partner.customer,partner.service])
             return Response(status=status.HTTP_201_CREATED)
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
         data = Partner.objects.all()
 
         serializer = PartnerSerializer(data, context={'request': request}, many=True)
 
         return Response(serializer.data)
-
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT', 'DELETE'])
 def partners_detail(request, pk):
@@ -42,8 +41,9 @@ def partners_detail(request, pk):
         if serializer.is_valid():
             serializer.save()
             return Response(status=status.HTTP_204_NO_CONTENT)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
     elif request.method == 'DELETE':
         partner.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
