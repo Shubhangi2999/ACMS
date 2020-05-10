@@ -23,7 +23,7 @@
   height: 6vw;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
+  background-color: whitesmoke;
   padding: 0px 40px;
   border-radius: 10px;
 }
@@ -38,4 +38,56 @@
   height: 32vw;
   background-color: white;
   border-radius: 10px;
+  overflow: hidden;
+}
+
+.dashboard-tabs {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 10px;
+  background-color: #bed6e4;
+}
+
+.dashboard-tab-button {
+  width: 100%;
+  margin: 10px 0px;
+  font-size: 20px;
+  outline: none;
+}
+
+.dashbutton {
+  font-weight: 500;
+  color: #444;
+  margin-left: 10px;
+  outline: none;
+}
+
+.dashbutton-active {
+  font-weight: 700;
+  font-size: 24px;
+  color: #00324e;
+}
+
+.dashbutton-active-icon {
+  font-size: 24px;
+  color: #00324e;
+}
+
+.dashbutton-inactive-icon {
+  font-size: 20px;
+  color: #444;
+}
+
+.dashboard-tabs-description {
+  display: flex;
+  flex: 4;
+  background-color: white;
+}
+
+.dashboard-tab-content {
+  display: flex;
+  flex: 1;
 }
