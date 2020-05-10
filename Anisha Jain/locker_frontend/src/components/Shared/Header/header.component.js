@@ -5,7 +5,6 @@ function Header(props){
     return(
         <Fragment>
             <br />
-
             <img className="photo" src={logo} alt="logo" />
             <div className="Head">
             <header>
