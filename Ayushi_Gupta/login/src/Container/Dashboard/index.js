@@ -9,7 +9,7 @@ export default class DashBoard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeTab: 1
+            activeTab: 2
         };
     };
 
@@ -27,7 +27,10 @@ export default class DashBoard extends React.Component {
             <div className='dashboard-wrapper'>
                 <Container className='dashboard-root'>
                     <Row className='dashboard-user'>
-                        <span>Welcome, Ayushi</span>
+                        <Col className='dashboard-user-greetings'>
+                            <span id='header'>Welcome, Ayushi!</span>
+                            <p id='subheader'>Here are your details</p>
+                        </Col>
                         <Button outline color="danger" onClick={this.logoutUser}>Logout</Button>
                     </Row>
                     <Row className='dashboard-user-details'>
@@ -35,10 +38,10 @@ export default class DashBoard extends React.Component {
                             <DashButton label='Profile' icon='fa fa-user' onClick={() => this.switchTabs(1)} isActive={activeTab === 1} />
                             <DashButton label='Store Details' icon='fa fa-info-circle' onClick={() => this.switchTabs(2)} isActive={activeTab === 2} />
                         </Container>
-                      <TabContent activeTab={activeTab} className='dashboard-tabs-description'>
-                        <Profile /> 
-                        <StoreDetails />
-                      </TabContent>
+                        <TabContent activeTab={activeTab} className='dashboard-tabs-description'>
+                            <Profile />
+                            <StoreDetails />
+                        </TabContent>
                     </Row>
                 </Container>
             </div>
