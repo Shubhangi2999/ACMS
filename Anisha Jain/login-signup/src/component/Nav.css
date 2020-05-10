@@ -1,0 +1,19 @@
+*{margin:0; padding:0; }
+.navstyle{
+    height: 50px;
+    widows: 100%;
+    background-color: #00324e;
+}
+.navstyle ul{
+    display: flex;
+    position: absolute;
+    right:0;
+    margin-right: 150px;
+    align-items: center;
+    list-style: none;
+}
+.navstyle ul li{
+    text-transform: uppercase;
+    list-style: none;
+    color: white;
+}
