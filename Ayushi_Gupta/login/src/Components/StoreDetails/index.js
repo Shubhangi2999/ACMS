@@ -7,7 +7,7 @@ export default class StoreDetails extends React.Component {
         super(props);
     };
 
-    onNewStore = () =>  {
+    onNewStore = () => {
         alert('implement: new store');
     };
 

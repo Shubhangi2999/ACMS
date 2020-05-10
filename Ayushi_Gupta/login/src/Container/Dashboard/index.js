@@ -9,9 +9,28 @@ export default class DashBoard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeTab: 2
+            activeTab: 1,
+            loading: true,
+            result: null,
         };
     };
+
+    async componentDidMount() {
+        try {
+            const result = await fetch('');
+
+            /**
+             * {
+             *  name: '',
+             *  email: ''
+             * }
+             */
+
+            this.setState({ result, loading: false });
+        } catch {
+            alert('Error while fetching data');
+        }
+    }
 
     logoutUser = () => {
         // Make AJAX requsest to backend (To rvoke user's JWT token)
