@@ -30,6 +30,10 @@ def customer_signup(request):
 
 @api_view(['POST', 'GET'])
 def login(request):
+    '''
+        Frontend -> api/login (POST) with data: { email, password }
+        Check if user exists, send success else error
+    '''
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
