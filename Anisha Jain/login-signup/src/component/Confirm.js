@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Label, FormGroup, FormFeedback, Button ,ListGroup,ListGroupItem,ListGroupItemHeading, ListGroupItemText} from 'reactstrap';
+import { Form,  Button ,ListGroup,ListGroupItem,ListGroupItemHeading, ListGroupItemText} from 'reactstrap';
 import {Row,Col} from 'reactstrap';
 export class Confirm extends Component{
     continue = e =>{
@@ -60,9 +60,9 @@ export class Confirm extends Component{
                     </Row>
                 </ListGroup>
 
-                <Button color="primary" style={styles.button}
+                <Button color="primary" size="lg" style={styles.button}
                 onClick={this.back}> Back</Button>
-                <Button color="primary" style={styles.button}
+                <Button color="primary" size="lg" style={styles.button}
                 onClick={this.continue}> Continue</Button>
                  </Form>
     );
@@ -70,7 +70,8 @@ export class Confirm extends Component{
 }
 const styles={
     button:{
-    margin:25
+    margin:25,
+    width:120
     }
 }
 export default Confirm;

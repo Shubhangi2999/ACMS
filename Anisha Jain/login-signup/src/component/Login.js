@@ -22,14 +22,15 @@ export class Login extends Component{
             <AvFeedback>Password is required</AvFeedback>
         </AvGroup>
         <center><Button color="primary" size="lg" style={styles.button}
-                onClick={this.continue}> Continue</Button></center>
+                onClick={this.continue}> Login</Button></center>
         </AvForm>
     );
     }
 } 
 const styles={
     button:{
-    margin:30
+    margin:25,
+    width:120
     }
 }
 export default Login; 

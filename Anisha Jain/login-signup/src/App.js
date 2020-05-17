@@ -13,6 +13,7 @@ class App extends Component {
       <BrowserRouter>
     <div className="App">
       <Nav className="nav" />
+
       <Switch>
     <div className="wrapper">
     <div className="form-wrapper">

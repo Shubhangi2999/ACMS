@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
-import { Form, Input, Label, FormGroup, FormFeedback, Button, isRequired} from 'reactstrap';
-import { AvForm, AvField, AvGroup, AvInput, AvFeedback, AvRadioGroup} from 'availity-reactstrap-validation';
+import { Row, Label, FormGroup,Input, FormFeedback, Form ,Button, isRequired, Col} from 'reactstrap';
 import {BrowserRouter as Router} from 'react-router-dom';
+import { isEmail } from 'validator';
 export class PersonalDetails extends Component{
-
+    
     continue = e =>{
         e.preventDefault();
         const data=this.props.values;
-        if(data.firstName==='' || data.lastName==='' || data.email==='' || data.contact==='' || data.password==='' || data.confirmpassword==='')
-        alert("Fill all the details");
-        //if(data.firstName!='' && data.lastName!='' && data.email!='' && data.contact!='' && data.password!='' && data.confirmpassword!='')
+        if(data.firstName==='')
+        alert("first Name cannot be empty");
+        else if(data.lastName==='')
+        alert("last Name cannot be empty");
+        else if(data.email==='')
+        alert("Email cannot be empty");
+        else if(!isEmail(data.email))
+        alert("Enter correct Email ID");
+        else if(data.contact==='')
+        alert("contact cannot be empty");
+        else if( data.password==='')
+        alert("Password cannot be empty");
+        else if(data.confirmPassword !== data.password)
+        alert("Password and confirm password should match");
         else
         this.props.nextstep();
     }
@@ -17,48 +28,73 @@ export class PersonalDetails extends Component{
     {
         const {values,handleChange}=this.props;
         return(
-            <Router>
-        <AvForm>
-                <h1>User Details</h1> 
-                <br />     
-        <AvGroup>
-            <Label for="firstName">First Name</Label>
-            <AvInput name="firstName" id="firstName" defaultValue={values.firstName} required onChange={handleChange('firstName')} />
-            <AvFeedback>First Name is required</AvFeedback>
-        </AvGroup>
-            
-        <AvGroup>
-            <Label for="lastName">Last Name</Label>
-            <AvInput name="lastName" id="lastName" defaultValue={values.lastName} required onChange={handleChange('lastName')} />
-            <AvFeedback>Last Name is required</AvFeedback>
-        </AvGroup>
+        <Router>
+        <Form>
+        <h1>User Details</h1> 
+        <br />  
+        <Row>
+            <Col>
+                <FormGroup>
+                    <Label for="firstName">First Name*</Label>
+                    <Input id="firstName" 
+                    name="firstName"
+                    defaultValue={values.lastName} 
+                    onChange={handleChange('firstName')} 
+                    />
+                </FormGroup>
+                </Col>
+                <Col>
+            <FormGroup>
+                    <Label for="lastName">Last Name*</Label>
+                    <Input id="lastName" 
+                    name="lastName"
+                    defaultValue={values.lastName} 
+                    onChange={handleChange('lastName')}
+                    />
+                </FormGroup>
+                </Col>
+                </Row>    
 
-        <AvGroup>
-            <Label for="email">Email</Label>
-            <AvInput name="email" id="email" type="email" defaultValue={values.email} required onChange={handleChange('email')} />
-            <AvFeedback>Invalid Email</AvFeedback>
-        </AvGroup>
+                <FormGroup>
+                    <Label for="email">Email*</Label>
+                    <Input id="email"
+                    name="email"
+                     defaultValue={values.email} 
+                     onChange={handleChange('email')}
+                     />
+                </FormGroup>
 
-        <AvGroup>
-            <Label for="contact">Contact No.</Label>
-            <AvInput name="contact" id="contact" defaultValue={values.contact} required onChange={handleChange('contact')} />
-            <AvFeedback>Contact No. is required</AvFeedback>
-        </AvGroup>
+                <FormGroup>
+                    <Label for="contact">Contact No.*</Label>
+                    <Input id="contact" 
+                    name="contact"
+                    defaultValue={values.contact} 
+                    onChange={handleChange('contact')}
+                    />
+                </FormGroup>
 
-        <AvGroup>
-            <Label for="password">Password</Label>
-            <AvInput name="password" type="password" id="password" defaultValue={values.password} required onChange={handleChange('password')} />
-            <AvFeedback>Password is required</AvFeedback>
-        </AvGroup>
+                <FormGroup>
+                    <Label for="password">Password*</Label>
+                    <Input id="password" 
+                    name="password"
+                    type="password" 
+                    defaultValue={values.password} 
+                    onChange={handleChange('password')}
+                    />
+                </FormGroup>
 
-        <AvGroup>
-            <Label for="confirmPassword">Confirm Password</Label>
-            <AvInput name="confirmPassword" type="password" id="confirmPassword" defaultValue={values.confirmPassword} required validate={{match:{value:'password'}}} onChange={handleChange('confirmPassword')} />
-            <AvFeedback>Invalid Password</AvFeedback>
-        </AvGroup>
-        <Button color="primary" style={styles.button}
-                onClick={this.continue}> Continue</Button>
-        </AvForm>
+                <FormGroup>
+                    <Label for="confirmPassword">Confirm Password*</Label>
+                    <Input id="confirmPassword" 
+                    name="confirmPassword"
+                    type="password"
+                     defaultValue={values.confirmPassword} 
+                     onChange={handleChange('confirmPassword')} 
+                     />
+                </FormGroup>
+        <Button color="primary" size="lg"  style={styles.button}
+        onClick={this.continue}> Next</Button>
+        </Form>
         </Router>
     );
     }
@@ -66,7 +102,8 @@ export class PersonalDetails extends Component{
 }
 const styles={
     button:{
-    margin:25
+    margin:20,
+    width:120
     }
 }
 export default PersonalDetails;
