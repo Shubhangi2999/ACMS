@@ -38,7 +38,7 @@ export class Login extends Component {
             const parsedResponse = await response.json(); 
 
             if (parsedResponse.success) {
-                // Store any token if proviced
+                // Store any token if provided
                 // Navigate to dashboard
             } else {
                 // Show error
@@ -46,18 +46,6 @@ export class Login extends Component {
         } catch (error) {
             // Show error
         }
-    }
-
-    //aunthenticate request
-    async requestUserInfo(token) {
-        const response = await fetch('http://localhost:8000/api/participant/userinfo', {
-            method: 'GET',
-            headers: new Headers({
-                Authorization: 'Bearer ${token}',
-            }),
-        });
-
-        return await response.json();
     }
 
     change = (e) => {
@@ -74,7 +62,7 @@ export class Login extends Component {
             password: "",
         });
 
-        // this.props.history.push('/landing');
+        this.props.history.push('/landing');
     };
 
     render() {
