@@ -1,8 +1,14 @@
 from rest_framework import serializers
-from .models import Partner
+from .models import Customer, Store
 
-class PartnerSerializer(serializers.ModelSerializer):
 
+class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Partner
+        model = Customer
+        fields = '__all__'
+
+
+class StoreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Store
         fields = '__all__'
