@@ -17,14 +17,14 @@ export default class DashBoard extends React.Component {
 
     async componentDidMount() {
         try {
-            const result = await fetch('');
+            const result = await fetch('http://localhost:8000/api/participant/userinfo', {
+                method: 'GET',
+                headers: new Headers({
+                    Authorization: 'Bearer ${token}',
+                }),
+            });
 
-            /**
-             * {
-             *  name: '',
-             *  email: ''
-             * }
-             */
+            return await response.json();
 
             this.setState({ result, loading: false });
         } catch {
