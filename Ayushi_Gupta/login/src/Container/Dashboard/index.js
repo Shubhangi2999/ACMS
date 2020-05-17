@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabContent, Container, Row, Col, Button, TabPane } from 'reactstrap';
+import { TabContent, Container, Row, Col, Button } from 'reactstrap';
 import './Dashboard.css';
 import Profile from '../../Components/Profile';
 import StoreDetails from '../../Components/StoreDetails';
