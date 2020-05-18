@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view #, renderer_classes
 #from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 from rest_framework import status
-import csv
+import csv, json
 from .models import Customer, Store
 from .serializers import *
 
@@ -39,13 +39,19 @@ def authenticate(email, password):
 
 @api_view(['POST', 'GET'])
 def login(request):
+    
     if request.method == 'POST':
         data = {}
         data = request.data
+        
         if authenticate(data["email"],data["password"]) == 0:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+        
         else:
-            return Response(status=status.HTTP_200_OK)
+            token = { "email" : data["email"] }
+            dump = json.dumps(token)
+            return HttpResponse(dump, status=200)
+        
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
