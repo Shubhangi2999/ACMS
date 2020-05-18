@@ -2,19 +2,21 @@ from django.db import models
 
 
 class Customer(models.Model):
-    id = models.AutoField(primary_key=True)
-    firstName = models.CharField(max_length=32)
-    lastName = models.CharField(max_length=32)
-    email = models.EmailField(unique=True)
-    contact = models.CharField(max_length=10)
+#    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.CharField(max_length=64, primary_key=True)
+    first_name = models.CharField(max_length=32, blank=True)
+    last_name = models.CharField(max_length=32, blank=True)
     password = models.CharField(max_length=32)
+#    auth_token =
+    contact = models.CharField(max_length=10)
+
 
     def __str__(self):
-        return self.firstName
+        return self.email
 
 
 class Store(models.Model):
-    ownerId = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Customer, on_delete=models.CASCADE)
     storeName = models.CharField(max_length=32)
     address = models.CharField(max_length=512)
     city = models.CharField(max_length=32)
@@ -27,4 +29,4 @@ class Store(models.Model):
     service = models.CharField(max_length=32)
 
     def __str__(self):
-        return self.storeName
+        return self.owner

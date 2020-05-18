@@ -1,8 +1,9 @@
-from django.shortcuts import render
+#from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+#from django.contrib.auth import authenticate, login
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, renderer_classes
-from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
+from rest_framework.decorators import api_view #, renderer_classes
+#from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 from rest_framework import status
 import csv
 from .models import Customer, Store
@@ -25,15 +26,26 @@ def customer_signup(request):
         data = Customer.objects.all()
         serializer = CustomerSerializer(data, context={'request': request}, many=True)
         return Response(serializer.data)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(status=status.HTTP_400_BAD_REQUEST)
+
+def authenticate(email, password):
+    try:
+        Customer.objects.get(pk=email, password=password)
+    except Customer.DoesNotExist:
+        return 0
+    else:
+        return 1
 
 
 @api_view(['POST', 'GET'])
 def login(request):
-    '''
-        Frontend -> api/login (POST) with data: { email, password }
-        Check if user exists, send success else error
-    '''
+    if request.method == 'POST':
+        data = {}
+        data = request.data
+        if authenticate(data["email"],data["password"]) == 0:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(status=status.HTTP_200_OK)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -51,15 +63,15 @@ def add_store(request):
 
     elif request.method == 'GET':
         data = Store.objects.all()
-        serializer = CustomerSerializer(data, context={'request': request}, many=True)
+        serializer = StoreSerializer(data, context={'request': request}, many=True)
         return Response(serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['PUT', 'DELETE'])
-def delete_store(request, pk):
+@api_view(['GET','POST','PUT', 'DELETE'])
+def delete_store(request, id):
     try:
-        store = Store.objects.get(owner=pk)
+        store = Store.objects.get(pk=id)
     except Store.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
