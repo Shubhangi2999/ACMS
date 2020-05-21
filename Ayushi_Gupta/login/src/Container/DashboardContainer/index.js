@@ -17,14 +17,15 @@ export default class DashBoard extends React.Component {
 
     async componentDidMount() {
         try {
+            const token = localStorage.getItem(token);
             const result = await fetch('http://localhost:8000/api/participant/userinfo', {
                 method: 'GET',
-                headers: new Headers({
-                    Authorization: 'Bearer ${token}',
-                }),
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             });
 
-            return await response.json();
+            return await result.json();
 
             this.setState({ result, loading: false });
         } catch {
@@ -35,7 +36,7 @@ export default class DashBoard extends React.Component {
     logoutUser = () => {
         // Make AJAX requsest to backend (To rvoke user's JWT token)
         // Navigate to login after successful response from server
-        alert('implement: handle logout');
+       alert('implement: handle logout');
     };
 
     switchTabs = tabIndex => this.setState({ activeTab: tabIndex });
