@@ -1,0 +1,35 @@
+.profile-tab-form {
+    display: flex;
+    flex-direction: column;
+    padding: 3em;
+    padding-top: 1.5em;
+}
+
+.profile-form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 1em;
+}
+
+.profile-form-group .profile-label {
+    align-self: flex-start;
+}
+
+.profile-form-group .profile-input {
+    width: 20vw;
+    background-color: #f3f3f3;
+    border: none;
+}
+
+.profile-form-group .profile-input::placeholder {
+    font-size: 16px;
+}
+
+.profile-text {
+    background-color: #e9e9e9;
+    align-self: flex-start;
+    font-size: 1em;
+    padding: 8px;
+    border-radius: 5px;
+}

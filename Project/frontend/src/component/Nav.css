@@ -1,0 +1,25 @@
+*{margin:0; padding:0; }
+.navstyle{
+    height: 100px;
+    width: 100%;
+    background-color: #2C3E50 ;
+}
+.navstyle ul{
+    display: flex;
+    position: absolute;
+    right:0;
+    margin-right: 150px;
+    align-items: center;
+    list-style: none;
+}
+.navstyle ul h1{
+    color:#F5EEF8;
+
+    margin-right: 180px;
+}
+.navstyle ul li{
+    text-transform: uppercase;
+    list-style: none;
+    color: white;
+    right:0;
+}
