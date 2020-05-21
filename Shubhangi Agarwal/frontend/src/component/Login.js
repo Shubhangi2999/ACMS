@@ -23,7 +23,7 @@ export class Login extends Component {
         const body = JSON.stringify({ email, password });
 
         try {
-          const response = await fetch('http://localhost:8000/api/login/', {
+            const response = await fetch('http://localhost:8000/api/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -34,17 +34,19 @@ export class Login extends Component {
             if (response.status !== 200) {
                 throw new Error('Login request not successful')
             }
-            
-            const parsedResponse = await response.json(); 
+
+            const parsedResponse = await response.json();
 
             if (parsedResponse.success) {
+               localStorage.setItem('token', parsedResponse.token) 
                 // Store any token if provided
                 // Navigate to dashboard
             } else {
-                // Show error
+                alert('Authentication failed')
             }
         } catch (error) {
-            // Show error
+                alert('Some error occurred during authentication')
+                // Show error
         }
     }
 
