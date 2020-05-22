@@ -16,9 +16,6 @@ def customer_signup(request):
         serializer = CustomerSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-#           with open('training.csv', 'a+', newline='') as file:
-#               writer = csv.writer(file)
-#               writer.writerow([serializer.data])
             return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -46,17 +43,9 @@ def login(request):
         if customer == 0:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         else:
-            token = { "email" : data["email"] }
-            dump = json.dumps(token)
-            return HttpResponse(dump, status=200)
-#            payload = {
-#                'id': customer.id,
-#                'email': customer.email
-#            }
-#            jwt_token = {'token':jwt.encode(payload, "SECRET_KEY")}
-#            return HttpResponse(json.dumps(jwt_token),
-#                                status=200,
-#                                content_type="application/json")
+            email = str(data["email"])
+            jwt_token = jwt.encode({"email": email} , "SECRET_KEY")
+            return HttpResponse([jwt_token], status=200)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
