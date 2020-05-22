@@ -15,6 +15,10 @@ Install
   2- djangorestframework
 
   3- django-cors-headers
+  
+  4- djangorestframework-simplejwt
+  
+  5- djangorestframework-jwt
 
   
 After installing the above dependencies, through terminal go to the project directory and run these commands:
