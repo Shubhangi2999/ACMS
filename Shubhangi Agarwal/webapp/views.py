@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view #, renderer_classes
 #from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 from rest_framework import status
-import csv, json
+import jwt, json, csv
 from .models import Customer, Store
 from .serializers import *
 
@@ -16,9 +16,6 @@ def customer_signup(request):
         serializer = CustomerSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-#           with open('training.csv', 'a+', newline='') as file:
-#               writer = csv.writer(file)
-#               writer.writerow([serializer.data])
             return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -30,7 +27,7 @@ def customer_signup(request):
 
 def authenticate(email, password):
     try:
-        Customer.objects.get(pk=email, password=password)
+        Customer.objects.get(email=email, password=password)
     except Customer.DoesNotExist:
         return 0
     else:
@@ -39,19 +36,16 @@ def authenticate(email, password):
 
 @api_view(['POST', 'GET'])
 def login(request):
-    
     if request.method == 'POST':
         data = {}
         data = request.data
-        
-        if authenticate(data["email"],data["password"]) == 0:
+        customer = authenticate(data["email"],data["password"])
+        if customer == 0:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-        
         else:
-            token = { "email" : data["email"] }
-            dump = json.dumps(token)
-            return HttpResponse(dump, status=200)
-        
+            email = str(data["email"])
+            jwt_token = jwt.encode({"email": email} , "SECRET_KEY")
+            return HttpResponse([jwt_token], status=200)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
