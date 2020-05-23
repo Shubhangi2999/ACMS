@@ -16,9 +16,9 @@ def get_location_names():
 def predict_program():
     total_sqft = float(request.form['total_sqft'])
     location = request.form['location']
-    rating = int(request.form['rating'])
+    rating = random.randint(0, 5) #int(request.form['rating'])
     employees = int(request.form['employees'])
-    Dpmo = int(request.form['Dpmo'])
+    Dpmo = random.randint(0, 100) #int(request.form['Dpmo'])
 
     response = jsonify({
         'predicted_program ': util.predict_program(location,rating,employees,total_sqft,Dpmo)
