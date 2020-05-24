@@ -16,15 +16,15 @@ export default class StoreDetails extends React.Component {
         const {
             address,
             city,
-            customers,
-            employees,
+            customer: customers,
+            workingemployees: employees,
             owner,
             pincode,
             service,
             size,
             state,
-            storeName,
-            typeStore,
+            storename: storeName,
+            typestore: typeStore,
         } = store;
         
         return (

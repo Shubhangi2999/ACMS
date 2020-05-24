@@ -12,4 +12,4 @@ class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store
         fields = '__all__'
-        #exclude = ['ownerId']
+        #exclude = ['owner']
