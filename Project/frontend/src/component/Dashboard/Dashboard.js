@@ -5,7 +5,6 @@ import Profile from './Profile';
 import Store from './Store';
 
 export default class DashBoard extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -28,9 +27,10 @@ export default class DashBoard extends Component {
             const storeResult = await this.request('dashboard/add-store/', token);
 
             const [user] = userResult.slice().filter(data => data.email === email);
+            // TODO: wrong store is being sent from the api
             const [store] = storeResult;
 
-            this.setState({ user, store, loading: false });
+            this.setState({ user, store, loading: true });
         } catch {
             alert('Error while fetching data');
         }
@@ -48,12 +48,14 @@ export default class DashBoard extends Component {
     }
 
     logoutUser = () => {
-        // Make AJAX requsest to backend (To rvoke user's JWT token)
-        // Navigate to login after successful response from server
-        alert('implement: handle logout');
+        const { history } = this.props;
+
+        localStorage.removeItem('userAuth');
+        history.push('/login');
     };
 
     switchTabs = tabIndex => this.setState({ activeTab: tabIndex });
+
     render() {
         const { activeTab } = this.state;
         return (

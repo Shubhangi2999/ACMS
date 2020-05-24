@@ -6,10 +6,9 @@ import { Link } from 'react-router-dom';
 export class Login extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            email: 't@t.com',
-            password: 'test',
+            email: '',
+            password: '',
             submitted: false,
             error: ''
         };
@@ -27,10 +26,6 @@ export class Login extends Component {
                 },
                 body
             });
-
-            if (response.status !== 200) {
-                throw new Error('Login request not successful');
-            }
 
             const token = await response.text();
 
@@ -51,11 +46,7 @@ export class Login extends Component {
         }
     }
 
-    change = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }; //end change
+    onChange = ({  target: {  name, value  } }) => this.setState({ [name]: value });
 
     onSubmit = (e) => {
         this.sendLoginRequest();
@@ -76,12 +67,12 @@ export class Login extends Component {
                 <br />
                 <AvGroup>
                     <Label for="email">Email</Label>
-                    <AvInput name="email" id="email" type="email" required />
+                    <AvInput onChange={this.onChange} name="email" id="email" type="email" required />
                     <AvFeedback>Invalid Email</AvFeedback>
                 </AvGroup>
                 <AvGroup>
                     <Label for="password">Password</Label>
-                    <AvInput name="password" type="password" id="password" required />
+                    <AvInput onChange={this.onChange} name="password" type="password" id="password" required />
                     <AvFeedback>Password is required</AvFeedback>
                 </AvGroup>
                 <center><Button onClick={this.sendLoginRequest} color="primary" size="lg" style={styles.button}>Login</Button></center>

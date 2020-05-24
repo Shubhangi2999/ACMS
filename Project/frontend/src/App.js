@@ -7,28 +7,37 @@ import Login from './component/Login';
 import Dashboard from './component/Dashboard/Dashboard';
 import Header from './component/Shared/Header/header.component';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import logo from './component/Shared/Header/amazon_logo.png';
+
 class App extends Component {
+
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <Nav className="nav" />
+          <Route exact path={['/', '/login']} exact component={() => <Nav className="nav" />} />
           <Switch>
             <div className="wrapper">
-              <div className="form-wrapper">
-                <Container>
-                  <Header />
-                  <Route exact path="/" exact component={UserForm} />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/dashboard" component={Dashboard} />
-                </Container>
-              </div>
+              <Route exact path={['/', '/login']} exact component={Header} />
+              <Route exact path="/" exact component={() => withFormWrapper(UserForm)} />
+              <Route exact path="/login" component={() => withFormWrapper(Login)} />
+              <Route exact path="/dashboard" component={Dashboard} />
             </div>
           </Switch>
         </div>
-      </BrowserRouter>
+      </BrowserRouter >
     );
   }
+}
+
+function withFormWrapper(Component) {
+  return (
+    <div className="form-wrapper">
+       <img className="photo" src={logo} alt="logo" />
+       <hr />
+      <Component />
+    </div>
+  );
 }
 
 export default App;
