@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import './Nav.css';
 import {Link} from 'react-router-dom';
 import { Button } from 'reactstrap';
-import { render } from 'react-dom';
 export class Nav extends Component
 {
     render()

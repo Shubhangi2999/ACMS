@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Input, Label, FormGroup, FormFeedback, Button, isRequired } from 'reactstrap';
-import { AvForm, AvField, AvGroup, AvInput, AvFeedback, AvRadioGroup } from 'availity-reactstrap-validation';
-import { Link } from 'react-router-dom';
+import { Label, Button} from 'reactstrap';
+import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
 
 export class Login extends Component {
     constructor(props) {
