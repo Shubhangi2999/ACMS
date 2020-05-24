@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TabContent, Container, Row, Col, Button } from 'reactstrap';
+import { TabContent, Container, Row, Col, Button, Spinner } from 'reactstrap';
 import './Dashboard.css';
 import Profile from './Profile';
 import Store from './Store';
@@ -30,7 +30,7 @@ export default class DashBoard extends Component {
             // TODO: wrong store is being sent from the api
             const [store] = storeResult;
 
-            this.setState({ user, store, loading: true });
+            this.setState({ user, store, loading: false });
         } catch {
             alert('Error while fetching data');
         }
@@ -57,29 +57,38 @@ export default class DashBoard extends Component {
     switchTabs = tabIndex => this.setState({ activeTab: tabIndex });
 
     render() {
-        const { activeTab } = this.state;
+        const { loading, activeTab, user, store } = this.state;
         return (
             <div className='dashboard-wrapper'>
                 <Container className='dashboard-root'>
-                    <Row className='dashboard-user'>
-                        <Col className='dashboard-user-greetings'>
-                            <span id='header'>Welcome, Ayushi!</span>
-                            <p id='subheader'>Here are your details</p>
-                        </Col>
-                        <Button outline color="danger" onClick={this.logoutUser}>Logout</Button>
-                    </Row>
-                    <Row className='dashboard-user-details'>
-                        <Container className='dashboard-tabs'>
-                            <DashButton label='Profile' icon='fa fa-user' onClick={() => this.switchTabs(1)} isActive={activeTab === 1} />
-                            <DashButton label='Store Details' icon='fa fa-info-circle' onClick={() => this.switchTabs(2)} isActive={activeTab === 2} />
-                        </Container>
-                        <TabContent activeTab={activeTab} className='dashboard-tabs-description'>
-                            <Profile />
-                            <Store />
-                        </TabContent>
-                    </Row>
+                    {loading ? (
+                        <div className='dashboard-loading'>
+                            <Spinner color="primary" />
+                            <span>Loading...</span>
+                        </div>
+                    ) : (
+                            <>
+                                <Row className='dashboard-user'>
+                                    <Col className='dashboard-user-greetings'>
+                                        <span id='header'>Welcome, Ayushi!</span>
+                                        <p id='subheader'>Here are your details</p>
+                                    </Col>
+                                    <Button outline color="danger" onClick={this.logoutUser}>Logout</Button>
+                                </Row>
+                                <Row className='dashboard-user-details'>
+                                    <Container className='dashboard-tabs'>
+                                        <DashButton label='Profile' icon='fa fa-user' onClick={() => this.switchTabs(1)} isActive={activeTab === 1} />
+                                        <DashButton label='Store Details' icon='fa fa-info-circle' onClick={() => this.switchTabs(2)} isActive={activeTab === 2} />
+                                    </Container>
+                                    <TabContent activeTab={activeTab} className='dashboard-tabs-description'>
+                                        <Profile />
+                                        <Store />
+                                    </TabContent>
+                                </Row>
+                            </>
+                        )}
                 </Container>
-            </div>
+            </div >
         );
     }
 }
