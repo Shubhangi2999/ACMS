@@ -18,9 +18,9 @@ class App extends Component {
               <div className="form-wrapper">
                 <Container>
                   <Header />
-                  <Route path="/" exact component={UserForm} />
-                  <Route path="/login" component={Login} />
-                  <Route path="/dashboard" component={Dashboard} />
+                  <Route exact path="/" exact component={UserForm} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/dashboard" component={Dashboard} />
                 </Container>
               </div>
             </div>

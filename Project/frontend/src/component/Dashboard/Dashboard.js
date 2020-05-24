@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import { TabContent, Container, Row, Col, Button } from 'reactstrap';
 import './Dashboard.css';
 import Profile from './Profile';
@@ -11,31 +11,46 @@ export default class DashBoard extends Component {
         this.state = {
             activeTab: 1,
             loading: true,
-            result: null,
+            user: null,
+            store: null,
         };
     };
 
     async componentDidMount() {
         try {
-            const token = localStorage.getItem(token);
-            const result = await fetch('http://localhost:8000/api/participant/userinfo', {
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            return await result.json();
+            const { token, email } = JSON.parse(localStorage.getItem('userAuth'));
 
-            this.setState({ result, loading: false });
+            if (!token) {
+                throw Error('User not authenticated');
+            }
+
+            const userResult = await this.request('signup/', token);
+            const storeResult = await this.request('dashboard/add-store/', token);
+
+            const [user] = userResult.slice().filter(data => data.email === email);
+            const [store] = storeResult;
+
+            this.setState({ user, store, loading: false });
         } catch {
             alert('Error while fetching data');
         }
     }
 
+    async request(path, token) {
+        const result = await fetch(`http://localhost:8000/webapp/api/${path}`, {
+            method: 'GET',
+            headers: {
+                Authorization: `${token}`,
+            },
+        });
+
+        return result.json();
+    }
+
     logoutUser = () => {
         // Make AJAX requsest to backend (To rvoke user's JWT token)
         // Navigate to login after successful response from server
-       alert('implement: handle logout');
+        alert('implement: handle logout');
     };
 
     switchTabs = tabIndex => this.setState({ activeTab: tabIndex });

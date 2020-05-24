@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import { Form, Input, Label, FormGroup, FormFeedback, Button, isRequired} from 'reactstrap';
-import { AvForm, AvField, AvGroup, AvInput, AvFeedback, AvRadioGroup} from 'availity-reactstrap-validation';
-import {Link} from 'react-router-dom';
-// const clientId = '';
-// const redirectUrl = '';
-export class Login extends Component{ 
+import { Form, Input, Label, FormGroup, FormFeedback, Button, isRequired } from 'reactstrap';
+import { AvForm, AvField, AvGroup, AvInput, AvFeedback, AvRadioGroup } from 'availity-reactstrap-validation';
+import { Link } from 'react-router-dom';
 
-
+export class Login extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            email: '',
-            password: '',
+            email: 't@t.com',
+            password: 'test',
             submitted: false,
             error: ''
         };
@@ -32,21 +29,25 @@ export class Login extends Component{
             });
 
             if (response.status !== 200) {
-                throw new Error('Login request not successful')
+                throw new Error('Login request not successful');
             }
 
-            const parsedResponse = await response.json();
+            const token = await response.text();
 
-            if (parsedResponse.success) {
-               localStorage.setItem('token', parsedResponse.token) 
-                // Store any token if provided
-                // Navigate to dashboard
-            } else {
-                alert('Authentication failed')
+            const userAuth = JSON.stringify({
+                token,
+                email,
+            });
+
+            if (!token) {
+                throw new Error('Token not recieved');
             }
+
+            localStorage.setItem('userAuth', userAuth)
+
+            this.props.history.push('/dashboard')
         } catch (error) {
-                alert('Some error occurred during authentication')
-                // Show error
+            alert('Some error occurred during authentication')
         }
     }
 
@@ -68,31 +69,30 @@ export class Login extends Component{
     };
 
 
-    render()
-    {
-    return( 
-        <AvForm>
-         <h1>Login</h1>  
-         <br />
-        <AvGroup>
-            <Label for="email">Email</Label>
-            <AvInput name="email" id="email" type="email" required />
-            <AvFeedback>Invalid Email</AvFeedback>
-        </AvGroup>
-        <AvGroup>
-            <Label for="password">Password</Label>
-            <AvInput name="password" type="password" id="password" required />
-            <AvFeedback>Password is required</AvFeedback>
-        </AvGroup>
-        <center><Button color="primary" size="lg" style={styles.button}><Link to="dashboard">Login</Link></Button></center>
-        </AvForm>
-    );
+    render() {
+        return (
+            <AvForm>
+                <h1>Login</h1>
+                <br />
+                <AvGroup>
+                    <Label for="email">Email</Label>
+                    <AvInput name="email" id="email" type="email" required />
+                    <AvFeedback>Invalid Email</AvFeedback>
+                </AvGroup>
+                <AvGroup>
+                    <Label for="password">Password</Label>
+                    <AvInput name="password" type="password" id="password" required />
+                    <AvFeedback>Password is required</AvFeedback>
+                </AvGroup>
+                <center><Button onClick={this.sendLoginRequest} color="primary" size="lg" style={styles.button}>Login</Button></center>
+            </AvForm>
+        );
     }
-} 
-const styles={
-    button:{
-    margin:25,
-    width:120
+}
+const styles = {
+    button: {
+        margin: 25,
+        width: 120
     },
 }
 export default Login; 
