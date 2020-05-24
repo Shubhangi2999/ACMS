@@ -19,8 +19,8 @@ class App extends Component {
           <Switch>
             <div className="wrapper">
               <Route exact path={['/', '/login']} exact component={Header} />
-              <Route exact path="/" exact component={() => withFormWrapper(UserForm)} />
-              <Route exact path="/login" component={() => withFormWrapper(Login)} />
+              <Route exact path="/" exact component={props => withFormWrapper(UserForm, props)} />
+              <Route exact path="/login" component={props => withFormWrapper(Login, props)} />
               <Route exact path="/dashboard" component={Dashboard} />
             </div>
           </Switch>
@@ -30,12 +30,12 @@ class App extends Component {
   }
 }
 
-function withFormWrapper(Component) {
+function withFormWrapper(Component, props) {
   return (
     <div className="form-wrapper">
        <img className="photo" src={logo} alt="logo" />
        <hr />
-      <Component />
+      <Component {...props} />
     </div>
   );
 }

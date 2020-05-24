@@ -1,77 +1,111 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PersonalDetails from './PersonalDetails'
 import StoreDetails from './StoreDetails';
 import Confirm from './Confirm';
 import Success from './Success';
-export class UserForm extends Component{
-    state={
-        step:1,
-        firstName: '',
-        lastName: '',
+export class UserForm extends Component {
+    state = {
+        step: 1,
+        first_name: '',
+        last_name: '',
         email: '',
         contact: '',
-        storename:'',
+        storename: '',
         address: '',
-        city:'',
+        city: '',
         state: '',
-        pincode:'',
-        typestore:'',
-        size:'',
-        workingemployees:'',
-        customer:'',
-        service:'',
+        pincode: '',
+        typestore: '',
+        size: '',
+        workingemployees: '',
+        customer: '',
+        service: '',
         password: '',
         confirmPassword: ''
     };
     //Proceed to next step
-    nextstep = () =>{
-        const {step} = this.state;
+    nextstep = () => {
+        const { step } = this.state;
         this.setState({
-            step:step+1
+            step: step + 1
         });
     };
     //proceed to prev step
-    prevstep = () =>{
-        const {step} = this.state;
+    prevstep = () => {
+        const { step } = this.state;
         this.setState({
-            step:step-1
+            step: step - 1
         });
     };
-    handleChange=input => e => {
-        this.setState({[input]:e.target.value});
+
+    handleChange = input => e => {
+        this.setState({ [input]: e.target.value });
     };
-    render()
-    {
-        const {step}= this.state;
-        const {firstName,lastName,email,contact,storename,address,city,state,pincode,typestore,size,workingemployees,
-            customer,service,password,confirmPassword}=this.state;
-        const values = {firstName,lastName,email,contact,storename,address,city,state,pincode,typestore,size,workingemployees,
-            customer,service,password,confirmPassword}
-        switch(step)
-        {
+
+    render() {
+        const { step } = this.state;
+        const {
+            first_name,
+            last_name,
+            email,
+            contact,
+            storename,
+            address,
+            city,
+            state,
+            pincode,
+            typestore,
+            size,
+            workingemployees,
+            customer,
+            service,
+            password,
+            confirmPassword
+        } = this.state;
+
+        const values = {
+            first_name,
+            last_name,
+            email,
+            contact,
+            storename,
+            address,
+            city,
+            state,
+            pincode,
+            typestore,
+            size,
+            workingemployees,
+            customer,
+            service,
+            password,
+            confirmPassword
+        };
+
+        switch (step) {
             case 1:
-                return(
+                return (
                     <PersonalDetails
-                    nextstep={this.nextstep}
-                    handleChange={this.handleChange}
-                    values={values} 
+                        nextstep={this.nextstep}
+                        handleChange={this.handleChange}
+                        values={values}
                     />
                 );
             case 2:
-                return(
+                return (
                     <StoreDetails
-                    nextstep={this.nextstep}
-                    prevstep={this.prevstep}
-                    handleChange={this.handleChange}
-                    values={values} 
+                        nextstep={this.nextstep}
+                        prevstep={this.prevstep}
+                        handleChange={this.handleChange}
+                        values={values}
                     />
                 );
             case 3:
-                return(
+                return (
                     <Confirm
-                    nextstep={this.nextstep}
-                    prevstep={this.prevstep}
-                    values={values} 
+                        nextstep={this.nextstep}
+                        prevstep={this.prevstep}
+                        values={values}
                     />
                 );
             case 4:

@@ -41,8 +41,8 @@ export class Confirm extends Component {
     render() {
         const {
             values: {
-                firstName,
-                lastName,
+                first_name,
+                last_name,
                 email,
                 contact,
                 storename,
@@ -67,9 +67,9 @@ export class Confirm extends Component {
                     <Row>
                         <Col>
                             <ListGroupItemHeading>FirstName:</ListGroupItemHeading>
-                            <ListGroupItem>{firstName}</ListGroupItem>
+                            <ListGroupItem>{first_name}</ListGroupItem>
                             <ListGroupItemHeading>LastName:</ListGroupItemHeading>
-                            <ListGroupItem>{lastName}</ListGroupItem>
+                            <ListGroupItem>{last_name}</ListGroupItem>
                             <ListGroupItemHeading>Email:</ListGroupItemHeading>
                             <ListGroupItem>{email}</ListGroupItem>
                             <ListGroupItemHeading>Contact:</ListGroupItemHeading>

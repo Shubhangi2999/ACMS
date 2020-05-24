@@ -40,7 +40,7 @@ export class Login extends Component {
 
             localStorage.setItem('userAuth', userAuth)
 
-            this.props.history.push('/dashboard')
+            this.props.history.push('/dashboard');
         } catch (error) {
             alert('Some error occurred during authentication')
         }

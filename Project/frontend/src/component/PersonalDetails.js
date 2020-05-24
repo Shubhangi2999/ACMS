@@ -7,9 +7,9 @@ export class PersonalDetails extends Component{
     continue = e =>{
         e.preventDefault();
         const data=this.props.values;
-        if(data.firstName==='')
+        if(data.first_name==='')
         alert("first Name cannot be empty");
-        else if(data.lastName==='')
+        else if(data.last_name==='')
         alert("last Name cannot be empty");
         else if(data.email==='')
         alert("Email cannot be empty");
@@ -38,8 +38,8 @@ export class PersonalDetails extends Component{
                     <Label for="firstName">First Name*</Label>
                     <Input id="firstName" 
                     name="firstName"
-                    defaultValue={values.lastName} 
-                    onChange={handleChange('firstName')} 
+                    defaultValue={values.first_name} 
+                    onChange={handleChange('first_name')} 
                     />
                 </FormGroup>
                 </Col>
@@ -48,8 +48,8 @@ export class PersonalDetails extends Component{
                     <Label for="lastName">Last Name*</Label>
                     <Input id="lastName" 
                     name="lastName"
-                    defaultValue={values.lastName} 
-                    onChange={handleChange('lastName')}
+                    defaultValue={values.last_name} 
+                    onChange={handleChange('last_name')}
                     />
                 </FormGroup>
                 </Col>
