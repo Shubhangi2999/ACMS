@@ -70,7 +70,7 @@ export default class DashBoard extends Component {
                             <>
                                 <Row className='dashboard-user'>
                                     <Col className='dashboard-user-greetings'>
-                                        <span id='header'>Welcome, Ayushi!</span>
+                                        <span id='header'>Welcome, {user.firstName}!</span>
                                         <p id='subheader'>Here are your details</p>
                                     </Col>
                                     <Button outline color="danger" onClick={this.logoutUser}>Logout</Button>
@@ -81,8 +81,8 @@ export default class DashBoard extends Component {
                                         <DashButton label='Store Details' icon='fa fa-info-circle' onClick={() => this.switchTabs(2)} isActive={activeTab === 2} />
                                     </Container>
                                     <TabContent activeTab={activeTab} className='dashboard-tabs-description'>
-                                        <Profile />
-                                        <Store />
+                                        <Profile user={user} />
+                                        <Store store={store} />
                                     </TabContent>
                                 </Row>
                             </>
