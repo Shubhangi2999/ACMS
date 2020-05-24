@@ -5,7 +5,7 @@ import Confirm from './Confirm';
 import Success from './Success';
 export class UserForm extends Component{
     state={
-        step:1,
+        step:3,
         firstName: '',
         lastName: '',
         email: '',

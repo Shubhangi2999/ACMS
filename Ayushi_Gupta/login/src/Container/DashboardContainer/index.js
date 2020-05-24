@@ -18,7 +18,7 @@ export default class DashBoard extends React.Component {
     async componentDidMount() {
         try {
             const token = localStorage.getItem(token);
-            const result = await fetch('http://localhost:8000/api/participant/userinfo', {
+            const result = await fetch('http://localhost:8000/webapp/api/participant/userinfo', {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`,
