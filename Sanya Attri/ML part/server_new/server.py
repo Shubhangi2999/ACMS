@@ -29,6 +29,6 @@ def predict_program():
     return response
 
 if __name__ == "__main__":
-    print("Starting Python Flask Server For Home Price Prediction...")
+    print("Starting Python Flask Server For Program Prediction...")
     util.load_saved_artifacts()
     app.run()
