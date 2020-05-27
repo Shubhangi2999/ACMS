@@ -19,14 +19,14 @@ def customer_signup(request):
             serializer.save()
             owner=Customer.objects.get(pk=form_data["email"])
             store = Store(owner=owner,
-                          storename=form_data["storename"],
+                          storeName=form_data["storeName"],
                           address=form_data["address"],
                           city = form_data["city"],
                           state = form_data["state"],
                           pincode = form_data["pincode"],
-                          typestore = form_data["typestore"],
+                          typeStore = form_data["typeStore"],
                           size = form_data["size"],
-                          workingemployees = form_data["workingemployees"],
+                          workingEmployees = form_data["workingEmployees"],
                           customer = form_data["customer"],
                           service = form_data["service"])
             store.save()
