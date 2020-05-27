@@ -8,9 +8,7 @@ export class Confirm extends Component {
         event.preventDefault();
         // Registration API call
         const data = this.props.values;
-
         const url = "http://localhost:8000/webapp/api/signup/"
-
         try {
             const body = JSON.stringify(data);
             const response = await fetch(url, {
@@ -41,18 +39,18 @@ export class Confirm extends Component {
     render() {
         const {
             values: {
-                first_name,
-                last_name,
+                firstName,
+                lastName,
                 email,
                 contact,
-                storename,
+                storeName,
                 address,
                 city,
                 state,
                 pincode,
-                typestore,
+                typeStore,
                 size,
-                workingemployees,
+                workingEmployees,
                 customer,
                 service,
                 password,
@@ -67,15 +65,15 @@ export class Confirm extends Component {
                     <Row>
                         <Col>
                             <ListGroupItemHeading>FirstName:</ListGroupItemHeading>
-                            <ListGroupItem>{first_name}</ListGroupItem>
+                            <ListGroupItem>{firstName}</ListGroupItem>
                             <ListGroupItemHeading>LastName:</ListGroupItemHeading>
-                            <ListGroupItem>{last_name}</ListGroupItem>
+                            <ListGroupItem>{lastName}</ListGroupItem>
                             <ListGroupItemHeading>Email:</ListGroupItemHeading>
                             <ListGroupItem>{email}</ListGroupItem>
                             <ListGroupItemHeading>Contact:</ListGroupItemHeading>
                             <ListGroupItem>{contact}</ListGroupItem>
                             <ListGroupItemHeading>Storename:</ListGroupItemHeading>
-                            <ListGroupItem>{storename}</ListGroupItem>
+                            <ListGroupItem>{storeName}</ListGroupItem>
                             <ListGroupItemHeading>Address:</ListGroupItemHeading>
                             <ListGroupItem>{address}</ListGroupItem>
                             <ListGroupItemHeading>City:</ListGroupItemHeading>
@@ -87,11 +85,11 @@ export class Confirm extends Component {
                             <ListGroupItemHeading>Pincode:</ListGroupItemHeading>
                             <ListGroupItem>{pincode}</ListGroupItem>
                             <ListGroupItemHeading>Type of store:</ListGroupItemHeading>
-                            <ListGroupItem>{typestore}</ListGroupItem>
+                            <ListGroupItem>{typeStore}</ListGroupItem>
                             <ListGroupItemHeading>Size of store:</ListGroupItemHeading>
                             <ListGroupItem>{size}</ListGroupItem>
                             <ListGroupItemHeading>No. of working employees:</ListGroupItemHeading>
-                            <ListGroupItem>{workingemployees}</ListGroupItem>
+                            <ListGroupItem>{workingEmployees}</ListGroupItem>
                             <ListGroupItemHeading>No. of Customers:</ListGroupItemHeading>
                             <ListGroupItem>{customer}</ListGroupItem>
                             <ListGroupItemHeading>Service:</ListGroupItemHeading>

@@ -11,8 +11,8 @@ export default class Profile extends React.Component {
     const { user } = this.props;
 
     const {
-      first_name: firstName,
-      last_name: lastName,
+      firstName,
+      lastName,
       email,
       contact,
     } = user;

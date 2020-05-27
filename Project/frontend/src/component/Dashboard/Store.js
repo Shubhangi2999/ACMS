@@ -16,15 +16,15 @@ export default class StoreDetails extends React.Component {
         const {
             address,
             city,
-            customer: customers,
-            workingemployees: employees,
+            customer,
+            workingEmployees,
             owner,
             pincode,
             service,
             size,
             state,
-            storename: storeName,
-            typestore: typeStore,
+            storeName,
+            typeStore,
         } = store;
         
         return (
@@ -68,12 +68,12 @@ export default class StoreDetails extends React.Component {
 
                     <FormGroup className='store-form-group'>
                         <Label className='store-label' for="no-of-employees">No of employees</Label>
-                        <span className='store-text'>{employees}</span>
+                        <span className='store-text'>{workingEmployees}</span>
                     </FormGroup>
 
                     <FormGroup className='store-form-group'>
                         <Label className='store-label' for="no-of-customers">No. of customers</Label>
-                        <span className='store-text'>{customers}</span>
+                        <span className='store-text'>{customer}</span>
                     </FormGroup>
 
                     <FormGroup className='store-form-group'>

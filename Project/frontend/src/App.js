@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
 import { UserForm } from './component/UserForm';
 import Nav from './component/Nav';
 import './App.css';
