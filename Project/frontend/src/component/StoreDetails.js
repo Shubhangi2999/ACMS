@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import { Form, Input, Label, FormGroup, Button } from 'reactstrap';
 import {Row,Col} from 'reactstrap';
 export class StoreDetails extends Component{
     continue = e =>{
@@ -63,12 +62,13 @@ export class StoreDetails extends Component{
 
                 <FormGroup>
                 <Label for="state">State*</Label>
-                <Input type="select" name="state" id="state" onChange={handleChange('state')} >
-                    <option>Delhi</option>
-                    <option>Maharashtra</option>
-                    <option>Gujurat</option>
-                    <option>Uttar Pradesh</option>
-                    <option>Punjab</option>
+                <Input type="select" name="state" id="state" defaultValue={values.state} onChange={handleChange('state')} >
+                    <option>Select State</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Gujurat">Gujurat</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Punjab">Punjab</option>
                 </Input>
                 </FormGroup>
                 </Col>
@@ -76,14 +76,15 @@ export class StoreDetails extends Component{
                 <FormGroup>
                     <Label for="typestore">Type of Store*</Label>
                     <Input type="select" name="typestore" id="typestore" defaultValue={values.typestore} onChange={handleChange('typestore')} >
-                    <option>Gym</option>
-                    <option>Restraunt</option>
-                    <option>Grocery</option>
-                    <option>Departmental Store</option>
-                    <option>Movie theater</option>
-                    <option>Bank</option>
-                    <option>Pharmacy</option>
-                    <option>Lifestyle Stores</option>
+                    <option>Select Type of Store</option>
+                    <option value="Gym">Gym</option>
+                    <option value="Restraunt">Restraunt</option>
+                    <option value="Grocery">Grocery</option>
+                    <option value="Departmental">Departmental Store</option>
+                    <option value="Movie">Movie theater</option>
+                    <option value="Bank">Bank</option>
+                    <option value="Pharmacy">Pharmacy</option>
+                    <option value="Lifestyle">Lifestyle Stores</option>
                     </Input>
                 </FormGroup>
                 <FormGroup>
@@ -104,10 +105,11 @@ export class StoreDetails extends Component{
                 <FormGroup>
                     <Label for="service">Services you want to offer(Delivery/Pickup/customers Return/All)*</Label>
                     <Input type="select" name="service" id="service" defaultValue={values.service} onChange={handleChange('service')} >
-                    <option>Delivery</option>
-                    <option>Pickup</option>
-                    <option>customers Return</option>
-                    <option>All</option>
+                    <option>Select type of Service</option>
+                    <option value="Delivery">Delivery</option>
+                    <option value="Pickup">Pickup</option>
+                    <option value="Return">customers Return</option>
+                    <option value="All">All</option>
                     </Input>
                 </FormGroup>
 

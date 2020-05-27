@@ -23,8 +23,8 @@ export default class DashBoard extends Component {
                 throw Error('User not authenticated');
             }
 
-            const userResult = await this.request('signup/', token);
-            const storeResult = await this.request('dashboard/add-store/', token);
+            const userResult = await this.request('dashboard/customer-details/', token);
+            const storeResult = await this.request('dashboard/store-details/', token);
 
             const [user] = userResult.slice().filter(data => data.email === email);
             // TODO: wrong store is being sent from the api
