@@ -13,25 +13,25 @@ def customer_signup(request):
     if request.method == 'POST':
         form_data = {}
         form_data = request.data
-        serializer = CustomerSerializer(data=form_data)
-
-        if serializer.is_valid():
-            serializer.save()
-            owner=Customer.objects.get(pk=form_data["email"])
-            store = Store(owner=owner,
-                          storename=form_data["storename"],
-                          address=form_data["address"],
-                          city = form_data["city"],
-                          state = form_data["state"],
-                          pincode = form_data["pincode"],
-                          typestore = form_data["typestore"],
-                          size = form_data["size"],
-                          workingemployees = form_data["workingemployees"],
-                          customer = form_data["customer"],
-                          service = form_data["service"])
-            store.save()
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        customer = Customer(email = form_data["email"],
+                            firstName = form_data["firstName"],
+                            lastName = form_data["lastName"],
+                            contact = form_data["contact"],
+                            password = form_data["password"])
+        customer.save()
+        store = Store(owner = customer,
+                      storeName = form_data["storeName"],
+                      address=form_data["address"],
+                      city = form_data["city"],
+                      state = form_data["state"],
+                      pincode = form_data["pincode"],
+                      typeStore = form_data["typeStore"],
+                      size = form_data["size"],
+                      workingEmployees = form_data["workingEmployees"],
+                      customer = form_data["customer"],
+                      service = form_data["service"])
+        store.save()
+        return Response(status=status.HTTP_201_CREATED)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -74,13 +74,28 @@ def customer_details(request):
 @api_view(['POST'])
 def add_store(request):
     if request.method == 'POST':
-        serializer = StoreSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            with open('training.csv', 'a+', newline='') as file:
-                writer = csv.writer(file)
-                writer.writerow([serializer.data])
-            return Response(status=status.HTTP_201_CREATED)
+        form_data = {}
+        form_data = request.data
+        auth = get_authorization_header(request).split()
+        token = auth[0]
+        payload = jwt.decode(token, "SECRET_KEY")
+        owner = Customer.objects.get(pk=form_data["email"])
+        store = Store(owner=owner,
+                      storeName=form_data["storeName"],
+                      address=form_data["address"],
+                      city=form_data["city"],
+                      state=form_data["state"],
+                      pincode=form_data["pincode"],
+                      typeStore=form_data["typeStore"],
+                      size=form_data["size"],
+                      workingEmployees=form_data["workingEmployees"],
+                      customer=form_data["customer"],
+                      service=form_data["service"])
+        store.save()
+        with open('training.csv', 'a+', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(store)
+        return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
