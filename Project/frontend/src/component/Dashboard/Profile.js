@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button, TabPane, Input, Label, Form, FormGroup } from 'reactstrap';
+import { TabPane, Label, Form, FormGroup } from 'reactstrap';
 import './Profile.css';
 
 export default class Profile extends React.Component {

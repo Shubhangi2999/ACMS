@@ -73,7 +73,7 @@ export default class DashBoard extends Component {
                                         <span id='header'>Welcome, {user.firstName}!</span>
                                         <p id='subheader'>Here are your details</p>
                                     </Col>
-                                    <Button outline color="danger" onClick={this.logoutUser}>Logout</Button>
+                                    <Button outline color="danger" onClick={this.logoutUser} id='button'>Logout</Button>
                                 </Row>
                                 <Row className='dashboard-user-details'>
                                     <Container className='dashboard-tabs'>

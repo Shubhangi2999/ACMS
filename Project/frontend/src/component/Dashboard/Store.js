@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button, TabPane, Input, Label, Form, FormGroup } from 'reactstrap';
+import { Container, Button, TabPane, Label, Form, FormGroup } from 'reactstrap';
 import './Store.css';
 
 export default class StoreDetails extends React.Component {
