@@ -27,10 +27,15 @@ export default class StoreDetails extends React.Component {
             typeStore,
             program,
         } = store;
-        
+
         return (
             <TabPane tabId={2} className='dashboard-tab-content'>
                 <Form className='store-tab-form'>
+                    <FormGroup className='store-form-group'>
+                        <Label className='store-label' for="program">Selected Program</Label>
+                        <span className='store-text'>{program}</span>
+                    </FormGroup>
+
                     <FormGroup className='store-form-group'>
                         <Label className='store-label' for="store-name">Store Name</Label>
                         <span className='store-text'>{storeName}</span>
@@ -68,12 +73,12 @@ export default class StoreDetails extends React.Component {
                     </FormGroup>
 
                     <FormGroup className='store-form-group'>
-                        <Label className='store-label' for="no-of-employees">No of employees</Label>
+                        <Label className='store-label' for="no-of-employees">No of Employees</Label>
                         <span className='store-text'>{workingEmployees}</span>
                     </FormGroup>
 
                     <FormGroup className='store-form-group'>
-                        <Label className='store-label' for="no-of-customers">No. of customers</Label>
+                        <Label className='store-label' for="no-of-customers">No. of Customers</Label>
                         <span className='store-text'>{customer}</span>
                     </FormGroup>
 
@@ -82,10 +87,6 @@ export default class StoreDetails extends React.Component {
                         <span className='store-text'>{service}</span>
                     </FormGroup>
 
-                    <FormGroup className='store-form-group'>
-                        <Label className='store-label' for="program">Program</Label>
-                        <span className='store-text'>{program}</span>
-                    </FormGroup>
                 </Form>
                 <Container className='new-store'>
                     <Button onClick={this.onNewStore} className='new-store-button'>New Store</Button>

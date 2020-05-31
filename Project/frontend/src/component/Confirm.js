@@ -86,7 +86,7 @@ export class Confirm extends Component {
                             <ListGroupItem>{pincode}</ListGroupItem>
                             <ListGroupItemHeading>Type of store:</ListGroupItemHeading>
                             <ListGroupItem>{typeStore}</ListGroupItem>
-                            <ListGroupItemHeading>Size of store:</ListGroupItemHeading>
+                            <ListGroupItemHeading>Store Size (in sq. ft.):</ListGroupItemHeading>
                             <ListGroupItem>{size}</ListGroupItem>
                             <ListGroupItemHeading>No. of working employees:</ListGroupItemHeading>
                             <ListGroupItem>{workingEmployees}</ListGroupItem>

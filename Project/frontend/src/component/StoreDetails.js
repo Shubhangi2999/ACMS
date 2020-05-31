@@ -90,7 +90,7 @@ export class StoreDetails extends Component{
                     onChange={handleChange('typeStore')} >
                     <option>Select Type of Store</option>
                     <option value="Gym">Gym</option>
-                    <option value="Restraunt">Restraunt</option>
+                    <option value="Restraunt">Restaurant</option>
                     <option value="Grocery">Grocery</option>
                     <option value="Departmental">Departmental Store</option>
                     <option value="Movie">Movie theater</option>
@@ -100,7 +100,7 @@ export class StoreDetails extends Component{
                     </Input>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="size">Size of Store*</Label>
+                    <Label for="size">Store Size (in sq. ft.) *</Label>
                     <Input id="size" defaultValue={values.size} onChange={handleChange('size')} />
                 </FormGroup>
 
