@@ -3,9 +3,26 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.authentication import get_authorization_header, BaseAuthentication
 from rest_framework import status
-import jwt, json, csv
+import jwt, json, csv, random
+from .util import predict_program
 from .models import Customer, Store
 from .serializers import *
+
+
+def predict(location,employees,total_sqft):
+    rating = random.randint(0, 5)
+    Dpmo = random.randint(0, 100)
+    predicted_program = predict_program(location,rating,employees,total_sqft,Dpmo)
+    program = ""
+    if predicted_program == 1:
+        program = "3P"
+    elif predicted_program == 2:
+        program = "IHS"
+    elif predicted_program == 3:
+        program = "Locker"
+    elif predicted_program == 4:
+        program = "Helix"
+    return program
 
 
 @api_view(['POST'])
@@ -19,9 +36,10 @@ def customer_signup(request):
                             contact = form_data["contact"],
                             password = form_data["password"])
         customer.save()
+        predicted_program = predict(form_data["address"],form_data["workingEmployees"],form_data["size"])
         store = Store(owner = customer,
                       storeName = form_data["storeName"],
-                      address=form_data["address"],
+                      address = form_data["address"],
                       city = form_data["city"],
                       state = form_data["state"],
                       pincode = form_data["pincode"],
@@ -29,7 +47,8 @@ def customer_signup(request):
                       size = form_data["size"],
                       workingEmployees = form_data["workingEmployees"],
                       customer = form_data["customer"],
-                      service = form_data["service"])
+                      service = form_data["service"],
+                      program = predicted_program)
         store.save()
         return Response(status=status.HTTP_201_CREATED)
     return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -80,6 +99,7 @@ def add_store(request):
         token = auth[0]
         payload = jwt.decode(token, "SECRET_KEY")
         owner = Customer.objects.get(pk=form_data["email"])
+        predicted_program = predict_program(form_data["address"], form_data["workingEmployees"], form_data["size"])
         store = Store(owner=owner,
                       storeName=form_data["storeName"],
                       address=form_data["address"],
@@ -90,7 +110,8 @@ def add_store(request):
                       size=form_data["size"],
                       workingEmployees=form_data["workingEmployees"],
                       customer=form_data["customer"],
-                      service=form_data["service"])
+                      service=form_data["service"],
+                      program=predicted_program)
         store.save()
         with open('training.csv', 'a+', newline='') as file:
             writer = csv.writer(file)

@@ -25,6 +25,7 @@ export default class StoreDetails extends React.Component {
             state,
             storeName,
             typeStore,
+            program,
         } = store;
         
         return (
@@ -83,7 +84,7 @@ export default class StoreDetails extends React.Component {
 
                     <FormGroup className='store-form-group'>
                         <Label className='store-label' for="program">Program</Label>
-                        <span className='store-text'>Locker</span>
+                        <span className='store-text'>{program}</span>
                     </FormGroup>
                 </Form>
                 <Container className='new-store'>
