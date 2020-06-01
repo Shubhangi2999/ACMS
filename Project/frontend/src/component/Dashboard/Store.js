@@ -20,7 +20,7 @@ export default class StoreDetails extends React.Component {
             workingEmployees,
             owner,
             pincode,
-            service,
+            ownedrented,
             size,
             state,
             storeName,
@@ -83,8 +83,8 @@ export default class StoreDetails extends React.Component {
                     </FormGroup>
 
                     <FormGroup className='store-form-group'>
-                        <Label className='store-label' for="service">Service</Label>
-                        <span className='store-text'>{service}</span>
+                        <Label className='store-label' for="ownedrented">Owned/Rented</Label>
+                        <span className='store-text'>{ownedrented}</span>
                     </FormGroup>
 
                 </Form>

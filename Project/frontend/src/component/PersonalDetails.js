@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Label, FormGroup,Input, FormFeedback, Form ,Button, isRequired, Col} from 'reactstrap';
+import { Row, Label, FormGroup,Input, FormFeedback, Form ,Button, Col} from 'reactstrap';
 import {BrowserRouter as Router} from 'react-router-dom';
 import { isEmail } from 'validator';
 export class PersonalDetails extends Component{
@@ -48,7 +48,7 @@ export class PersonalDetails extends Component{
                     <Label for="lastName">Last Name*</Label>
                     <Input id="lastName" 
                     name="lastName"
-                    defaultValue={values.last_name} 
+                    defaultValue={values.lastName} 
                     onChange={handleChange('lastName')}
                     />
                 </FormGroup>

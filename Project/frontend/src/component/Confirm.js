@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import { Form, Button, ListGroup, ListGroupItem, ListGroupItemHeading } from 'reactstrap';
 import { Row, Col } from 'reactstrap';
 
 export class Confirm extends Component {
@@ -52,7 +52,7 @@ export class Confirm extends Component {
                 size,
                 workingEmployees,
                 customer,
-                service,
+                ownedrented,
                 password,
                 confirmPassword
             }
@@ -92,8 +92,8 @@ export class Confirm extends Component {
                             <ListGroupItem>{workingEmployees}</ListGroupItem>
                             <ListGroupItemHeading>No. of Customers:</ListGroupItemHeading>
                             <ListGroupItem>{customer}</ListGroupItem>
-                            <ListGroupItemHeading>Service:</ListGroupItemHeading>
-                            <ListGroupItem>{service}</ListGroupItem>
+                            <ListGroupItemHeading>Owned/Rented:</ListGroupItemHeading>
+                            <ListGroupItem>{ownedrented}</ListGroupItem>
                         </Col>
                     </Row>
                 </ListGroup>

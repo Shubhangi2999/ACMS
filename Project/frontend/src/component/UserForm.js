@@ -19,7 +19,7 @@ export class UserForm extends Component {
         size: '',
         workingEmployees: '',
         customer: '',
-        service: '',
+        ownedrented: '',
         password: '',
         confirmPassword: ''
     };
@@ -58,7 +58,7 @@ export class UserForm extends Component {
             size,
             workingEmployees,
             customer,
-            service,
+            ownedrented,
             password,
             confirmPassword
         } = this.state;
@@ -77,7 +77,7 @@ export class UserForm extends Component {
             size,
             workingEmployees,
             customer,
-            service,
+            ownedrented,
             password,
             confirmPassword
         };

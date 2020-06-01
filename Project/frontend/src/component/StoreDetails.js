@@ -23,8 +23,8 @@ export class StoreDetails extends Component{
         alert("No. of working employees is required");
         else if(data.customer==='')
         alert("No. of customers is required");
-        else if(data.service==='')
-        alert("Type of service is required");
+        else if(data.ownedrented==='')
+        alert("Owned/Rented is required");
         else
         this.props.nextstep();
     }
@@ -119,15 +119,13 @@ export class StoreDetails extends Component{
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="service">Services you want to offer(Delivery/Pickup/customers Return/All)*</Label>
-                    <Input type="select" name="service" id="service" 
-                    defaultValue={values.service} 
-                    onChange={handleChange('service')} >
-                    <option>Select type of Service</option>
-                    <option value="Delivery">Delivery</option>
-                    <option value="Pickup">Pickup</option>
-                    <option value="Return">customers Return</option>
-                    <option value="All">All</option>
+                    <Label for="ownedrented">Store is Owned/Rented*</Label>
+                    <Input type="select" name="ownedrented" id="ownedrented" 
+                    defaultValue={values.ownedrented} 
+                    onChange={handleChange('ownedrented')} >
+                    <option>Select Owned/Rented</option>
+                    <option value="Owned">Owned</option>
+                    <option value="Rented">Rented</option>
                     </Input>
                 </FormGroup>
 
