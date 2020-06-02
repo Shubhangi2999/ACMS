@@ -76,7 +76,7 @@ export class StoreDetails extends Component{
                     <option>Select State</option>
                     <option value="Delhi">Delhi</option>
                     <option value="Maharashtra">Maharashtra</option>
-                    <option value="Gujurat">Gujurat</option>
+                    <option value="Gujurat">Gujarat</option>
                     <option value="Uttar Pradesh">Uttar Pradesh</option>
                     <option value="Punjab">Punjab</option>
                 </Input>

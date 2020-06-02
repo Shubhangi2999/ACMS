@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Label, FormGroup,Input, FormFeedback, Form ,Button, Col} from 'reactstrap';
+import { Row, Label, FormGroup,Input, Form ,Button, Col} from 'reactstrap';
 import {BrowserRouter as Router} from 'react-router-dom';
 import { isEmail } from 'validator';
 export class PersonalDetails extends Component{

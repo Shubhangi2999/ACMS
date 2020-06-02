@@ -18,7 +18,7 @@ export default class StoreDetails extends React.Component {
             city,
             customer,
             workingEmployees,
-            owner,
+            // owner,
             pincode,
             ownedRented: ownedrented,
             size,
@@ -32,8 +32,8 @@ export default class StoreDetails extends React.Component {
             <TabPane tabId={2} className='dashboard-tab-content'>
                 <Form className='store-tab-form'>
                     <FormGroup className='store-form-group'>
-                        <Label className='store-label' for="program">Selected Program</Label>
-                        <span className='store-text'>{program}</span>
+                        <Label className='store-label-program' for="program">Selected Program</Label>
+                        <span className='store-text-program'>{program}</span>
                     </FormGroup>
 
                     <FormGroup className='store-form-group'>
