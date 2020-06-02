@@ -10,7 +10,7 @@ export class Nav extends Component
             
         <div className="navstyle">
             <ul>
-            <center><h1>ACCESS POINT CLASSIFIER</h1></center>
+            <center><h1>ACCESS POINT CLASSIFICATION</h1></center>
               <center> <Button style={styles.button} color="secondary" size="lg"> <Link to="/"><li>Register</li> </Link></Button></center>
              <center>  <Button style={styles.button} color="secondary" size="lg"> <Link to="login"><li>Login </li></Link></Button></center>
             </ul>
