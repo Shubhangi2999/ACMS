@@ -31,7 +31,7 @@ def predict_program(location,rating,employees,total_sqft,Dpmo):
 
     return round(__model.predict([x])[0],2)
 
-
+"""
 def load_saved_artifacts():
     print("loading saved artifacts...start")
     global  __data_columns
@@ -60,3 +60,4 @@ if __name__ == '__main__':
     print(predict_program('1st Phase JP Nagar', 1000, 2, 2, 45))
     print(predict_program('Kalhalli', 1000, 2, 2, 33)) # other location
     print(predict_program('Ejipura', 1000, 2, 2, 55))  # other location
+"""
