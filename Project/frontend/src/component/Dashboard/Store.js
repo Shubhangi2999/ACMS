@@ -20,7 +20,7 @@ export default class StoreDetails extends React.Component {
             workingEmployees,
             owner,
             pincode,
-            ownedrented,
+            ownedRented: ownedrented,
             size,
             state,
             storeName,

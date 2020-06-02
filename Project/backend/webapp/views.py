@@ -9,10 +9,11 @@ from .models import Customer, Store
 from .serializers import *
 
 
-def predict(location,employees,total_sqft):
+#def predict(city,typeStore,own_rent,total_sqft,workingEmployees):
+def predict(city,total_sqft,workingEmployees):
     rating = random.randint(0, 5)
     Dpmo = random.randint(0, 100)
-    predicted_program = predict_program(location,rating,employees,total_sqft,Dpmo)
+    predicted_program = predict_program(city,rating,total_sqft,workingEmployees,Dpmo)
     program = ""
     if predicted_program == 1:
         program = "3P"
@@ -36,7 +37,8 @@ def customer_signup(request):
                             contact = form_data["contact"],
                             password = form_data["password"])
         customer.save()
-        predicted_program = predict(form_data["address"],form_data["workingEmployees"],form_data["size"])
+        #predicted_program = predict(form_data["city"],form_data["typeStore"],form_data["ownedrented"],form_data["size"],form_data["workingEmployees"])
+        predicted_program = predict(form_data["address"],form_data["size"],form_data["workingEmployees"])
         store = Store(owner = customer,
                       storeName = form_data["storeName"],
                       address = form_data["address"],
@@ -47,7 +49,7 @@ def customer_signup(request):
                       size = form_data["size"],
                       workingEmployees = form_data["workingEmployees"],
                       customer = form_data["customer"],
-                      service = form_data["service"],
+                      ownedRented = form_data["ownedrented"],
                       program = predicted_program)
         store.save()
         return Response(status=status.HTTP_201_CREATED)
@@ -99,7 +101,7 @@ def add_store(request):
         token = auth[0]
         payload = jwt.decode(token, "SECRET_KEY")
         owner = Customer.objects.get(pk=form_data["email"])
-        predicted_program = predict_program(form_data["address"], form_data["workingEmployees"], form_data["size"])
+        predicted_program = predict(form_data["city"],form_data["address"],form_data["ownedRented"],form_data["size"],form_data["workingEmployees"])
         store = Store(owner=owner,
                       storeName=form_data["storeName"],
                       address=form_data["address"],
@@ -110,7 +112,7 @@ def add_store(request):
                       size=form_data["size"],
                       workingEmployees=form_data["workingEmployees"],
                       customer=form_data["customer"],
-                      service=form_data["service"],
+                      ownedRented=form_data["ownedrented"],
                       program=predicted_program)
         store.save()
         with open('training.csv', 'a+', newline='') as file:

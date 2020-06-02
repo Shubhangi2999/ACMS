@@ -24,7 +24,7 @@ class Store(models.Model):
     size = models.CharField(max_length=32)
     workingEmployees = models.PositiveIntegerField()
     customer = models.PositiveIntegerField()
-    service = models.CharField(max_length=32)
+    ownedRented = models.CharField(max_length=32)
     program = models.CharField(max_length=32)
     feedback = models.CharField(max_length=256, default='', blank=True)
 
